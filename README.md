@@ -10,14 +10,12 @@ Question about the SKAT R package.
 In this code, I simulate the phenotype, directly based on the 
 genotype (i.e. no covariates), in three ways:
 
- * Linear: Phenotype is the sum of minor SNPs
- * Squared: Phenotype is the square of sum of minor SNPs
- * Cubed: Phenotype is the cube of sum of minor SNPs
+ * `linear`: Phenotype is the sum of minor SNPs
+ * `quadratic`: Phenotype is the square of sum of minor SNPs
+ * `cubed`: Phenotype is the cube of sum of minor SNPs
 
 From that, I let SKAT estimate if 
-Why does SKAT estimates non-linear data (i.e. a non-linear relationship 
-between genotype and phenotype) to be more linear than data with a 
-perfectly linear relationship between genotype and phenotype?
+Why can SKAT fit a linear null model to the `quadratic` best?
 
 ![](p_values.png)
 
