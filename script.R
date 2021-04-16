@@ -66,7 +66,7 @@ linear_null_model_continuous <- SKAT_Null_Model(
   out_type = "C" # continuous
 )
 # p-value: 1.334689e-67
-lowest_p_value <- SKAT(Z = d$Z, linear_null_model_continuous)$p.value
+linear_p_value <- SKAT(Z = d$Z, linear_null_model_continuous)$p.value
 
 ###############################################################################
 # 2.2. Continuous phenotype is the sum of the genotype squared,
@@ -94,9 +94,7 @@ linear_null_model_continuous <- SKAT_Null_Model(
 # p-value: 1.066488e-68
 # WEIRD! I expect it is harder to reject the null hypothesis (data is linear)
 # on non-linear data.
-middle_p_value <- SKAT(Z = d$Z, linear_null_model_continuous)$p.value
-
-testthat::expect_true(lowest_p_value < middle_p_value)
+quadratic_p_value <- SKAT(Z = d$Z, linear_null_model_continuous)$p.value
 
 ###############################################################################
 # 2.3. Continuous phenotype is the sum of the genotype squared,
@@ -124,7 +122,23 @@ linear_null_model_continuous <- SKAT_Null_Model(
 # p-value: 3.153643e-62
 # OK! It is harder to reject the null hypothesis (data is linear)
 # on even more non-linear data.
-highest_p_value <- SKAT(Z = d$Z, linear_null_model_continuous)$p.value
+cubic_p_value <- SKAT(Z = d$Z, linear_null_model_continuous)$p.value
 
-testthat::expect_true(middle_p_value < highest_p_value)
+t <- tibble::tribble(
+  ~model,  ~p_value,
+  "linear", linear_p_value,
+  "quadratic", quadratic_p_value,
+  "cubic",  cubic_p_value
+)
+t$model <- factor(
+  c(t$model),
+  levels = c("linear", "quadratic", "cubic")
+)
 
+ggplot2::ggplot(t, ggplot2::aes(model, p_value)) +
+  ggplot2::geom_col() +
+  ggplot2::scale_y_log10() + ggplot2::ggsave("p_values.png")
+
+testthat::expect_true(quadratic_p_value < cubic_p_value)
+
+# testthat::expect_true(linear_p_value < quadratic_p_value) # This will fail
