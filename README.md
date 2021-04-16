@@ -17,7 +17,6 @@ genotype (i.e. no covariates), in three ways:
  * `quadratic`: Phenotype is the square of sum of minor SNPs
  * `cubed`: Phenotype is the cube of sum of minor SNPs
 
-From that, I let SKAT estimate if 
 Why can SKAT fit a linear null model to the `quadratic` best?
 
 ![](p_values.png)
