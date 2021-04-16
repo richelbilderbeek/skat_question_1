@@ -2,7 +2,7 @@
 
 Question about the SKAT R package.
 
- * Code: [sim_and_skat.R](sim_and_skat.R)
+ * Code: [script.R](script.R)
  * Video: [YouTube](https://youtu.be/6Tmd6Y0RN-w) [download (.ogv)](http://richelbilderbeek.nl/skat_question_1.ogv)
 
 
