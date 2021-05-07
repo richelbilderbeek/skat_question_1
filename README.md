@@ -22,3 +22,15 @@ Why can SKAT fit a linear null model to the `quadratic` best?
 ![](p_values.png)
 
 
+## Answer
+
+From [Zhangchen](https://groups.google.com/g/skat_slee/c/pmmYIwtAYtA/m/aDxn72HlBAAJ?pli=1):
+
+> The true effect sizes between the linear model and quadratic model are 
+> different. By your assumption, the effect size of all causal SNPs in the 
+> quadratic model is larger than the linear model. At the same time, 
+> we still can use linear models to describe the quadratic associations. 
+> (The performance may not be as good as quadratic models). Because 
+> of these two reasons, the estimated effect size in quadratic models 
+> may be larger than linear models, thereby the p-values are more significant.
+
