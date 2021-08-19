@@ -137,7 +137,7 @@ t$model <- factor(
 
 ggplot2::ggplot(t, ggplot2::aes(model, p_value)) +
   ggplot2::geom_col() +
-  ggplot2::scale_y_log10() + ggplot2::ggsave("p_values.png")
+  ggplot2::scale_y_log10() ; ggplot2::ggsave("p_values.png")
 
 testthat::expect_true(quadratic_p_value < cubic_p_value)
 
